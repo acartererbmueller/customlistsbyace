@@ -143,8 +143,164 @@ namespace CustomListTests
 
             // assert
             Assert.AreEqual(expected, actual);
-
         }
+
+                [TestClass]
+        public class RemoveTests
+        {
+            [TestMethod]
+            public void Remove_RemovingoneValue_CheckingIndexZero()
+            {
+                // arrange
+                CustomList<int> testList = new CustomList<int>();
+                int itemToAdd1 = 10;
+                int itemToAdd2 = 15;
+                int expected = 15;
+                int actual;
+
+                // act
+                testList.Add(itemToAdd1);
+                testList.Add(itemToAdd2);
+                testList.Remove(itemToAdd1);
+                actual = testList[0];
+
+                // assert
+                Assert.AreEqual(expected, actual);
+            }
+
+            [TestMethod]
+            public void Remove_RemovingOneValueFromCustomList_CountOfCustomListIncrementsiszero()
+            {
+                // arrange
+                CustomList<int> testList = new CustomList<int>();
+                int itemToAdd = 10;
+                int expected = 0;
+                int actual;
+
+                // act
+                testList.Add(itemToAdd);
+                testList.Remove(itemToAdd);
+                actual = testList.Count;
+
+                // assert
+                Assert.AreEqual(expected, actual);
+            }
+
+            // what happens if you remoive multiple things (or remove from a CustomList that already has some values)?
+            [TestMethod]
+            public void Remove_RemovingMultipleValuesFromCustomList_RemainingValueEndAtIndexOne()
+            { // arrange
+                CustomList<int> testList = new CustomList<int>();
+                int itemToAdd1 = 10;
+                int itemToAdd2 = 6;
+                int itemToAdd3 = 45;
+                int itemToAdd4 = 25;
+                int expected = 25;
+                int actual;
+
+                // act
+                testList.Add(itemToAdd1);
+                testList.Add(itemToAdd2);
+                testList.Add(itemToAdd3);
+                testList.Add(itemToAdd4);
+                testList.Remove(itemToAdd1);
+                testList.Remove(itemToAdd2);
+                actual = testList[1];
+                // assert
+                Assert.AreEqual(expected, actual);
+
+
+
+            }
+
+
+
+           
+
+            [TestMethod]
+            public void Remove_RemovingOneItemFromCustomList_IndexOfLastItemIsTwo()
+            { // arrange
+                CustomList<int> testList = new CustomList<int>();
+                int itemToAdd1 = 40;
+                int itemToAdd2 = 35;
+                int itemToAdd3 = 85;
+                int itemToAdd4 = 90;
+                int expected = 90;
+                int actual;
+
+                // act
+                testList.Add(itemToAdd1);
+                testList.Add(itemToAdd2);
+                testList.Add(itemToAdd3);
+                testList.Add(itemToAdd4);
+                testList.Remove(itemToAdd3);
+                actual = testList[2];
+
+                // assert
+                Assert.AreEqual(expected, actual);
+
+
+            }
+
+            // what happens to the Count?
+            [TestMethod]
+
+            public void Remove_RemovingMultipleValuesFromCustomList_CountofCustomListIncrementsIsTwo()
+            { // arrange
+                CustomList<int> testList = new CustomList<int>();
+                int itemToAdd1 = 40;
+                int itemToAdd2 = 35;
+                int itemToAdd3 = 85;
+                int itemToAdd4 = 70;
+                int expected = 2;
+                int actual;
+
+                // act
+                testList.Add(itemToAdd1);
+                testList.Add(itemToAdd2);
+                testList.Add(itemToAdd3);
+                testList.Add(itemToAdd4);
+                testList.Remove(itemToAdd1);
+                testList.Remove(itemToAdd2);
+                actual = testList.Count;
+
+                // assert
+                Assert.AreEqual(expected, actual);
+            }
+
+
+            // what happens if you remove more items than the initial Capacity of the CustomList?
+            [TestMethod]
+            public void Remove_RemovngMultipleValuesFromCustomList_CapacityOfCustomListisfour()
+            {
+                // arrange
+                CustomList<int> testList = new CustomList<int>();
+                int itemToAdd1 = 87;
+                int itemToAdd2 = 78;
+                int itemToAdd3 = 98;
+                int itemToAdd4 = 25;
+                int itemToAdd5 = 98;
+                int expected = 4;
+                int actual;
+
+                // act
+                testList.Add(itemToAdd1);
+                testList.Add(itemToAdd2);
+                testList.Add(itemToAdd3);
+                testList.Add(itemToAdd4);
+                testList.Add(itemToAdd5);
+                testList.Remove(itemToRemove1);
+                testList.Remove(itemToRemove2);
+                testList.Remove(itemToRemove3);
+                actual = testList.Capacity;
+
+                // assert
+                Assert.AreEqual(expected, actual);
+
+
+
+
+        }    }
     }    
 
         
