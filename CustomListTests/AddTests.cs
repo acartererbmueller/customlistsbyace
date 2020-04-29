@@ -50,7 +50,7 @@ namespace CustomListTests
             int itemToAdd2 = 6;
             int itemToAdd3 = 45;
             int itemToAdd4 = 25;
-            int expected = 45;
+            int expected = 25;
             int actual;
 
             // act
@@ -144,8 +144,58 @@ namespace CustomListTests
             // assert
             Assert.AreEqual(expected, actual);
         }
+        [TestMethod]
+        public void Add_AddingMultipleValuesToCustomList_ValuesAddedInNewHigherCapactiy()
+        {
+            // arrange
+            CustomList<int> testList = new CustomList<int>();
+            int itemToAdd1 = 87;
+            int itemToAdd2 = 78;
+            int itemToAdd3 = 98;
+            int itemToAdd4 = 25;
+            int itemToAdd5 = 98;
+            int expected = 98;
+            int actual;
 
-                [TestClass]
+            // act
+            testList.Add(itemToAdd1);
+            testList.Add(itemToAdd2);
+            testList.Add(itemToAdd3);
+            testList.Add(itemToAdd4);
+            testList.Add(itemToAdd5);
+            actual = testList[4];
+
+            // assert
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void Add_AddingMultipleValuesToCustomList_OriginalValuesPersistWithCapacityChanget()
+        {
+            // arrange
+            CustomList<int> testList = new CustomList<int>();
+            int itemToAdd1 = 87;
+            int itemToAdd2 = 78;
+            int itemToAdd3 = 98;
+            int itemToAdd4 = 25;
+            int itemToAdd5 = 98;
+            int expected = 87;
+            int actual;
+
+            // act
+            testList.Add(itemToAdd1);
+            testList.Add(itemToAdd2);
+            testList.Add(itemToAdd3);
+            testList.Add(itemToAdd4);
+            
+            
+            testList.Add(itemToAdd5);
+            actual = testList[0];
+
+            // assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestClass]
         public class RemoveTests
         {
             [TestMethod]
@@ -289,9 +339,9 @@ namespace CustomListTests
                 testList.Add(itemToAdd3);
                 testList.Add(itemToAdd4);
                 testList.Add(itemToAdd5);
-                testList.Remove(itemToRemove1);
-                testList.Remove(itemToRemove2);
-                testList.Remove(itemToRemove3);
+                testList.Remove(itemToAdd1);
+                testList.Remove(itemToAdd2);
+                testList.Remove(itemToAdd3);
                 actual = testList.Capacity;
 
                 // assert
