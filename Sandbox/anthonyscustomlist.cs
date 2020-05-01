@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -63,7 +64,7 @@ namespace CustomList
             if(count == capacity)
             {
                 //Increase capacty times 2
-
+                Array.Resize(>4, *2);
 
                 //Instantiate new array with size of the new capactiy, call it tempArray
 
